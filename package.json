@@ -1,0 +1,19 @@
+{
+  "name": "fe-homework",
+  "version": "1.0.0",
+  "description": "NetEase front-end final project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "fe-homework"
+  },
+  "keywords": [
+    "final",
+    "project"
+  ],
+  "author": "icellent",
+  "license": "MIT"
+}
