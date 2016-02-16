@@ -1,0 +1,25 @@
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+html {
+  font-family: $font-stack;
+  font-size: 0.8em;
+}
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+.wrap {
+  max-width: 1200px;
+  margin: auto;
+}
+a {
+  color: $link-color;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:focus {
+    text-decoration: underline;
+  }
+}
