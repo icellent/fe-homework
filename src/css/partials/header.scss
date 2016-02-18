@@ -1,10 +1,72 @@
 .header-container {
-
   .u-top-notify {
-    background: #999;
-    p {
-      padding: 15px;
+    background: $primary-color;
+    color: gray;
+    .wrap {
+      position: relative;
+      p {
+        padding: 10px 0;
+        margin: 0;
+      }
+      span {
+        position: absolute;
+        right: 0;
+        top: 10px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .m-header {
+    height: 90px;
+    .logo {
+      display: inline-block;
+      line-height: 90px;
+      width: 25%;
       margin: 0;
+      span {
+        color: $link-color;
+        font-size: 1.1em;
+      }
+    }
+    .u-follow {
+      display: inline-block;
+      line-height: 80px;
+      width: 25%;
+      .isfollow {
+        background: $link-color;
+        padding: 3px 15px;
+        margin-right: 5px;
+        border-radius: 3px;
+        color: white;
+        cursor: pointer;
+      }
+    }
+    .m-header-nav {
+      display: inline-block;
+      width: 44%;
+      list-style: none;
+      padding: 0;
+      text-align: right;
+      li {
+        display: inline-block;
+        margin-left: 50px;
+        a {
+          color: gray;
+          font-size: 1.2em;
+          &:focus {
+            color: $link-color;
+          }
+          &:hover {
+            color: $link-color;
+          }
+        }
+      }
+    }
+    .u-search {
+      display: inline-block;
+      text-align: right;
+      width: 5%;
     }
   }
 }
