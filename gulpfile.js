@@ -6,7 +6,12 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     imagemin = require('gulp-imagemin'),
     handlebars = require('gulp-compile-handlebars'),
-    rename = require('gulp-rename');
+    rename = require('gulp-rename'),
+    browserify = require('browserify'),
+    source = require('vinyl-source-stream'),
+    buffer = require('vinyl-buffer'),
+    lint = require('gulp-jshint');
+
 
 gulp.task('templates', function() {
   var data = {
@@ -41,15 +46,34 @@ gulp.task('images', function(){
 });
 
 gulp.task('scripts', function(){
+  b = browserify({
+    entries: 'src/js/main.js',
+    debug: true
+  });
 
+  b.bundle()
+    .pipe(source('main.js'))
+    .pipe(buffer())
+    .pipe(sourcemaps.init({loadMaps: true}))
+    .pipe(uglify())
+    .pipe(sourcemaps.write('./'))
+    .pipe(gulp.dest('dist/js/'))
+    .pipe(browserSync.stream());
 });
 
-gulp.task('default', ['styles', 'images', 'templates'], function() {
+gulp.task('lint', function() {
+  gulp.src('src/js/**/*.js')
+    .pipe(lint())
+    .pipe(lint.reporter('default'));
+});
+
+gulp.task('default', ['styles', 'images',  'scripts', 'templates'], function() {
   browserSync.init({
     server: './'
   });
   gulp.watch('src/img/**/*', ['images']);
   gulp.watch('src/css/**/*.scss', ['styles']);
+  gulp.watch('src/js/**/*js', ['scripts']);
   gulp.watch('src/templates/**/*.hbs', ['templates']);
   gulp.watch('*.html', browserSync.reload);
 });

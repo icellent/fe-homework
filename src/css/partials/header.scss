@@ -2,6 +2,7 @@
   .u-top-notify {
     background: $primary-color;
     color: gray;
+    transition: all 0.5s;
     .wrap {
       position: relative;
       p {
@@ -10,7 +11,7 @@
       }
       span {
         position: absolute;
-        right: 0;
+        right: 15px;
         top: 10px;
         cursor: pointer;
       }
@@ -26,7 +27,9 @@
       margin: 0;
       span {
         color: $link-color;
-        font-size: 1.1em;
+        font-size: 1.2em;
+        font-family: 'Arial';
+        font-weight: bolder;
       }
     }
     .u-follow {
@@ -66,7 +69,17 @@
     .u-search {
       display: inline-block;
       text-align: right;
+      font-size: 1.5em;
       width: 5%;
+      a {
+        color: gray;
+        &:focus {
+          color: $link-color;
+        }
+        &:hover {
+          color: $link-color;
+        }
+      }
     }
   }
 }

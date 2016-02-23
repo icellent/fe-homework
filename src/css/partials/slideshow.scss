@@ -1,0 +1,36 @@
+.slide-show-container {
+  width: 100%;
+  max-height: 460px;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  position: relative;
+
+  .slide-indicators {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    list-style: none;
+    padding-left: 0;
+    li {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: white;
+      margin-left: 8px;
+      cursor: pointer;
+      &.active {
+        background-color: black;
+      }
+    }
+  }
+  > .slide {
+    display: none;
+
+    &.active {
+      display: block;
+    }
+  }
+}

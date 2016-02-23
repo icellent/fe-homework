@@ -1,0 +1,59 @@
+.showcase-container {
+
+  .u-workspace {
+    overflow: hidden;
+    text-align: center;
+    img {
+      display: inline-block;
+    }
+  }
+
+  .m-course {
+    margin: 30px 0;
+    list-style: none;
+    padding-left: 0;
+
+    li {
+      width: 29%;
+      display: inline-block;
+      margin-right: 5%;
+      &:last-child {
+        margin-right: 0;
+      }
+      .content {
+        display: inline-block;
+        width: 70%;
+        margin-left: 15px;
+        h2 {
+          margin-top: 0;
+          color: #333;
+        }
+        p {
+          line-height: 1.8;
+          font-size: 1.2em;
+          color: #666;
+        }
+      }
+      b {
+        &.icon {
+          display: inline-block;
+          margin-top: 20px;
+          vertical-align: top;
+          width: 80px;
+          height: 80px;
+          background: $link-color url('../img/iconsprite.png') no-repeat;
+          border-radius: 50%;
+        }
+        &.icon-ease {
+          background-position: center left;
+        }
+        &.icon-course {
+          background-position: center left -90px;
+        }
+        &.icon-mooc {
+          background-position: center left -180px;
+        }
+      }
+    }
+  }
+}

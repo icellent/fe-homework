@@ -1,0 +1,46 @@
+.footer-container {
+  background-color: $footer-bg;
+  padding-top: 90px;
+  padding-bottom: 80px;
+
+  .u-copyright {
+    float: left;
+    margin-right: 300px;
+    color: #999;
+    letter-spacing: 2px;
+    .footer-logo {
+      color: $link-color;
+    }
+    p {
+      line-height: 1.8;
+    }
+  }
+
+  .u-footer-nav {
+    float: left;
+    color: #999;
+    list-style: none;
+    padding-left: 0;
+    line-height: 2.2;
+    font-size: 1.2em;
+    h4 {
+      font-size: 0.9em;
+      margin: 0
+    }
+    a {
+      color: #999;
+      &:hover {
+        color: $link-color;
+      }
+    }
+    >li {
+      float: left;
+      margin-right: 100px;
+
+      ul {
+        list-style: none;
+        padding-left: 0;
+      }
+    }
+  }
+}
