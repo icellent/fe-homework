@@ -10,10 +10,10 @@ var view = module.exports = {
       topNotify.style.opacity = 1;
       setTimeout(function() {
         topNotify.style.opacity = 0;
-      }, 50)
+      }, 50);
       setTimeout(function() {
         topNotify.style.display = 'none';
-      }, 250)
+      }, 250);
     }
   },
 
@@ -62,7 +62,7 @@ var view = module.exports = {
   updateFollowUI: function () {
     var isfollow = document.getElementById('isfollow');
     isfollow.classList.add('followed');
-    isfollow.innerHTML = '<i class="fa fa-check"></i> 已关注 | <a href="#">取消</a>'
+    isfollow.innerHTML = '<i class="fa fa-check"></i> 已关注 | <a href="#">取消</a>';
   },
 
 

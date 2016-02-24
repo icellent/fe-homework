@@ -87,7 +87,7 @@ var helper = module.exports = {
         } else {
           view.loginAlert();
         }
-      })
+      });
   },
   getFollowData: function() {
       request.get('http://study.163.com/webDev/attention.htm', function(err, res) {
@@ -97,14 +97,14 @@ var helper = module.exports = {
         } else {
           alert('关注失败');
         }
-      })
+      });
   },
 
   getHotlistsData: function() {
     request.get('http://study.163.com/webDev/hotcouresByCategory.htm', function(err, res) {
       model.hotData = JSON.parse(res.text);
-      model.hotData.sort(function(a, b) { return b.learnerCount - a.learnerCount });
+      model.hotData.sort(function(a, b) { return b.learnerCount - a.learnerCount; });
       view.drawHotlists(model.hotData);
-    })
+    });
   }
 };
