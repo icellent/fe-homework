@@ -40,14 +40,27 @@
         background: $link-color;
         padding: 3px 15px;
         margin-right: 5px;
-        border-radius: 3px;
+        border-radius: 2px;
         color: white;
         cursor: pointer;
       }
 
       .followed {
-        background: #999;
+        border: 1px solid $primary-color;
+        background: #f8f8f8;
         color: #333;
+
+        a {
+          color: #333;
+        }
+
+        &:hover {
+          a {
+            color: $link-color;
+          }
+
+          background-color: white;
+        }
       }
     }
     .m-header-nav {

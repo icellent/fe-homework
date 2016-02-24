@@ -35,7 +35,7 @@
       }
 
       .modal-body {
-        input {
+        > input {
           display: block;
           outline: none;
           padding-left: 10px;
@@ -47,6 +47,13 @@
           outline: none;
           border: 1px solid #dfdfdf;
           box-shadow: inset 2px 2px #f1f1f1
+        }
+        > span.alert {
+          display: block;
+          text-align: center;
+          color: red;
+          opacity: 1;
+          transition: opacity 0.5s;
         }
       }
 
