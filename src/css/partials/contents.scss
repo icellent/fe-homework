@@ -159,7 +159,7 @@
           margin-bottom: 10px;
           > a {
             display: block;
-            color: #999;
+            color: #333;
             > .desc {
               > p {
                 margin: 2px 0 10px;
@@ -167,6 +167,9 @@
             		text-overflow: ellipsis;
             		white-space: nowrap;
             		overflow: hidden;
+              }
+              > span {
+                color: #999;
               }
               > span::before {
                 font: normal normal normal 14px/1 FontAwesome;

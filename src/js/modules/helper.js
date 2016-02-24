@@ -1,5 +1,6 @@
 var model = require('./model.js');
 var cookie =  require('./cookie.js');
+var md5 = require('md5');
 
 
 var helper = module.exports = {
@@ -15,7 +16,18 @@ var helper = module.exports = {
       return b.learnerCount - a.learnerCount;
     })
   },
+  validate: function(username, password) {
+    if (username && password) {
+      username = md5(username);
+      password =  md5(password);
 
+      return model.loginData(username, password);
+    }
+  },
+
+  getFollowState: function() {
+
+  },
   getHottest: function() {
     helper.randomize(model.hotData);
     for (var i = 0; i < model.hotData.length; i++) {
