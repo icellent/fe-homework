@@ -17,6 +17,36 @@ var view = module.exports = {
     }
   },
 
+  videoMoal: function() {
+    var vid = '<div class="modal-header">';
+          vid += '<button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
+          vid += '<h4 class="modal-title video-title">请观看下面的视频</h4>';
+        vid += '</div>';
+        vid += '<div class="modal-body">';
+          vid += '<video src="http://mov.bn.netease.com/open-movie/nos/mp4/2014/12/30/SADQ86F5S_shd.mp4" controls width="890"></video>';
+        vid += '</div>';
+    document.querySelector('.modal-dialog').style.width = '950px';
+    document.querySelector('.modal-dialog>.modal-content').innerHTML = vid;
+  },
+
+  loginModal: function() {
+    var lm = '<div class="modal-header">';
+          lm += '<button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
+          lm += '<h4 class="modal-title">登录网易云课堂</h4>';
+        lm += '</div>';
+        lm += '<form action="">';
+          lm += '<div class="modal-body">';
+            lm += '<input type="text" name="name" id="username" placeholder="用户名">';
+            lm += '<input type="password" name="password" id="password" placeholder="密码">';
+          lm += '</div>';
+            lm += '<div class="modal-footer">';
+            lm += '<button type="submit">登录</button>';
+          lm += '</div>';
+        lm += '</form>';
+    document.querySelector('.modal-dialog').style.width = '390px';
+    document.querySelector('.modal-dialog>.modal-content').innerHTML = lm;
+  },
+
   modalClose: function() {
     if (document.querySelector('.modal-backdrop')) {
       document.body.removeChild(document.querySelector('.modal-backdrop'));
@@ -36,13 +66,6 @@ var view = module.exports = {
     span.setAttribute('class', 'alert');
     span.innerHTML = "用户名或密码错误";
     document.querySelector('.modal .modal-body').appendChild(span);
-
-    // setTimeout(function() {
-    //   span.style.opacity = 0.8;
-    // }, 1000);
-    // setTimeout(function() {
-    //   span.style.opacity = 0.4;
-    // }, 1000);
     setTimeout(function() {
       span.style.opacity = 0;
     }, 1200);
@@ -72,32 +95,44 @@ var view = module.exports = {
     document.querySelector('.modal').addEventListener('click', view.modalClickOutside);
   },
 
+  generateList: function(data) {
+    var li = document.createElement('li'),
+        a = document.createElement('a'),
+        featureSpan = document.createElement('span'),
+        descSpan = document.createElement('span'),
+        span = document.createElement('span'),
+        p = document.createElement('p'),
+        img = document.createElement('img');
+        p.innerHTML = data.name;
+     a.setAttribute('href', data.providerLink);
+     img.setAttribute('src', data.smallPhotoUrl);
+     span.innerHTML = data.learnerCount;
+     featureSpan.setAttribute('class', 'feature');
+     descSpan.setAttribute('class', 'desc');
+     featureSpan.appendChild(img);
+     descSpan.appendChild(p);
+     descSpan.appendChild(span);
+     a.appendChild(featureSpan);
+     a.appendChild(descSpan);
+     li.appendChild(a);
+     document.querySelector(".hot-lists").appendChild(li);
+  },
+
   drawHotlists: function(data) {
-    document.querySelector(".hot-lists").innerHTML = "";
-    for (var i = 0; i < data.length; i++) {
-      if (i > 10) {
-        break;
-      }
-      var li = document.createElement('li'),
-          a = document.createElement('a'),
-          featureSpan = document.createElement('span'),
-          descSpan = document.createElement('span'),
-          span = document.createElement('span'),
-          p = document.createElement('p'),
-          img = document.createElement('img');
-          p.innerHTML = data[i].name;
-       a.setAttribute('href', data[i].providerLink);
-       img.setAttribute('src', data[i].smallPhotoUrl);
-       span.innerHTML = data[i].learnerCount;
-       featureSpan.setAttribute('class', 'feature');
-       descSpan.setAttribute('class', 'desc');
-       featureSpan.appendChild(img);
-       descSpan.appendChild(p);
-       descSpan.appendChild(span);
-       a.appendChild(featureSpan);
-       a.appendChild(descSpan);
-       li.appendChild(a);
-       document.querySelector(".hot-lists").appendChild(li);
+    var hotlists = document.querySelector(".hot-lists");
+    var n = 0;
+    hotlists.innerHTML = "";
+    for (var i = 0; i < 10; i++) {
+      view.generateList(data[i]);
     }
+    function updatelist() {
+        hotlists.removeChild(hotlists.firstChild);
+        view.generateList(data[n+10]);
+        n++;
+      if (n < 10) {
+        setTimeout(updatelist, 5000);
+      }
+    }
+    setTimeout(updatelist, 5000);
   }
 };

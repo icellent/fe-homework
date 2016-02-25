@@ -3,14 +3,16 @@ var view = require('./view.js');
 var md5 = require('md5');
 var model = require('./model.js');
 var request = require('superagent');
+var slider = require('./slider.js');
 
 
 var helper = module.exports = {
   init: function() {
     helper.toggleNotify();
     helper.getHotlistsData();
-    helper.loginModal();
-    helper.loginState();
+    helper.ModalEvent();
+    helper.checkFollowState();
+    slider.slideEvent();
   },
 
   toggleNotify: function() {
@@ -49,21 +51,31 @@ var helper = module.exports = {
   modalOpen: function(e) {
     var node = e.target;
     if (node && node === document.querySelector('#isfollow') && !cookie.getItem('loginSuc')) {
+      view.loginModal();
+      view.modalShow();
+      helper.submitListener();
+
+    } else if (node && node === document.querySelector('#introvideo>video')) {
+      e.preventDefault();
+      view.videoMoal();
       view.modalShow();
     }
   },
 
-  loginModal: function() {
+  ModalEvent: function() {
     document.addEventListener('click', helper.modalOpen);
     document.addEventListener('click', helper.modalClickClose);
     document.querySelector('.modal').addEventListener('click', helper.modalClickOutside);
   },
 
-  loginState: function() {
+  submitListener: function() {
+    return document.querySelector('form').addEventListener('submit', helper.pocceedLogin);
+  },
+
+  checkFollowState: function() {
     if (cookie.getItem('followSuc')) {
       view.updateFollowUI();
     }
-    document.querySelector('form').addEventListener('submit', helper.pocceedLogin);
   },
 
   pocceedLogin: function(e) {
