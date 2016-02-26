@@ -96,26 +96,18 @@ var view = module.exports = {
   },
 
   generateList: function(data) {
-    var li = document.createElement('li'),
-        a = document.createElement('a'),
-        featureSpan = document.createElement('span'),
-        descSpan = document.createElement('span'),
-        span = document.createElement('span'),
-        p = document.createElement('p'),
-        img = document.createElement('img');
-        p.innerHTML = data.name;
-     a.setAttribute('href', data.providerLink);
-     img.setAttribute('src', data.smallPhotoUrl);
-     span.innerHTML = data.learnerCount;
-     featureSpan.setAttribute('class', 'feature');
-     descSpan.setAttribute('class', 'desc');
-     featureSpan.appendChild(img);
-     descSpan.appendChild(p);
-     descSpan.appendChild(span);
-     a.appendChild(featureSpan);
-     a.appendChild(descSpan);
-     li.appendChild(a);
-     document.querySelector(".hot-lists").appendChild(li);
+    var li = document.createElement('li');
+    var node = '<a href="' + data.providerLink + '#">';
+        node += '<span class="feature">';
+        node += '<img src="' + data.smallPhotoUrl + '" alt="">';
+        node += '</span>';
+        node += '<span class="desc">';
+        node += '<p>' + data.name +'</p>';
+        node += '<span>' + data.learnerCount + '</span>';
+        node += '</span>';
+        node += '</a>';
+    li.innerHTML = node;
+    document.querySelector(".hot-lists").appendChild(li);
   },
 
   drawHotlists: function(data) {
